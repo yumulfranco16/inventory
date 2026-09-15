@@ -20,9 +20,9 @@
 
 |
 
-<a href="index.php?action=logout">
-    Logout
-</a>
+<form method="POST" action="index.php?action=logout" style="display:inline;" onsubmit="return confirm('Are you sure you want to logout?');">
+    <button type="submit">Logout</button>
+</form>
 
 <br><br>
 

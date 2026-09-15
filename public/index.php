@@ -4,9 +4,11 @@ require_once __DIR__ . '/../config/database.php';
 
 require_once __DIR__ . '/../app/controllers/AuthController.php';
 require_once __DIR__ . '/../app/controllers/ProductController.php';
+require_once __DIR__ . '/../app/controllers/UserController.php';
 
 $authController = new AuthController($conn);
 $productController = new ProductController($conn);
+$userController = new UserController($conn);
 
 $action = $_GET['action'] ?? 'login';
 
@@ -29,6 +31,30 @@ switch ($action) {
         }
 
         require __DIR__ . '/../app/views/dashboard.php';
+        break;
+
+    case 'users':
+        $userController->index();
+        break;
+
+    case 'create_user':
+        $userController->create();
+        break;
+
+    case 'edit_user':
+        $userController->edit();
+        break;
+
+    case 'change_password':
+        $userController->changePassword();
+        break;
+
+    case 'toggle_user_status':
+        $userController->toggleStatus();
+        break;
+
+    case 'delete_user':
+        $userController->delete();
         break;
 
     case 'products':
